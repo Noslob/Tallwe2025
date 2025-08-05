@@ -1,0 +1,45 @@
+---
+- hosts: ubuntu
+  become: yes
+
+  tasks:
+  - name: actualizar sistema
+    ansible.builtin.apt:
+      name: "*"
+      state: latest
+      update_cache: true
+    notify: Reiniciar sistema
+
+  - name: No permitir login con root
+    ansible.builtin.lineinfile:
+      path: /etc/ssh/sshd_config
+      insertafter: '^#PermitRootLogin'
+      line: PermitRootLogin no
+    notify: reiniciar daemon ssh
+    ignore_errors: yes
+
+  - name: Existe directorio /opt/test
+    ansible.builtin.file:
+      path: /opt/test
+      state: directory
+      owner: nobody
+      group: nogroup
+      mode: '0777'
+    register: resultado
+
+  - name: Mostrar resultado
+    ansible.builtin.debug: 
+#      var: resultado     
+       msg: "{{ resultado.diff.after }}"
+    when: resultado.changed 
+ 
+  handlers:
+
+  - name: Reiniciar sistema
+    ansible.builtin.reboot:
+  
+  - name: reiniciar daemon ssh
+    ansible.builtin.systemd_service:
+      name: ssh
+      state: restarted  
+  

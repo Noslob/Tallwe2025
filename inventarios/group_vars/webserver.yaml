@@ -1,0 +1,6 @@
+---
+#Esto es un archivo de variables
+paquete: httpd
+servicio: httpd
+servicios_firewall: [http,https]
+
