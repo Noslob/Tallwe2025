@@ -1,0 +1,350 @@
+[sysadmin@vbox playbooks]$ cd ..
+[sysadmin@vbox Tallwe2025]$ ls
+ansible.cfg  collections  inventarios  LICENSE  playbooks  README.md
+[sysadmin@vbox Tallwe2025]$ tree
+.
+├── ansible.cfg
+├── collections
+│   └── requirements.yaml
+├── inventarios
+│   └── host.ini
+├── LICENSE
+├── playbooks
+│   ├── webserver
+│   └── webserver.yaml
+└── README.md
+
+3 directories, 7 files
+[sysadmin@vbox Tallwe2025]$ nano inventarios/host.ini
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ 
+[sysadmin@vbox Tallwe2025]$ ansible -i 192.168.1.2, all -m setup | less
+[sysadmin@vbox Tallwe2025]$ 
+[sysadmin@vbox Tallwe2025]$ mkdir templates
+[sysadmin@vbox Tallwe2025]$ nano templates/indesx.j2
+[sysadmin@vbox Tallwe2025]$ mv indesx.j2 index.j2
+mv: cannot stat 'indesx.j2': No such file or directory
+[sysadmin@vbox Tallwe2025]$ cd templates
+[sysadmin@vbox templates]$ las
+bash: las: command not found...
+ls
+[sysadmin@vbox templates]$ ls
+indesx.j2
+[sysadmin@vbox templates]$ mv indesx.j2 index.j2
+[sysadmin@vbox templates]$ ls
+index.j2
+[sysadmin@vbox templates]$ cd ..
+[sysadmin@vbox Tallwe2025]$ nano playbook/host.ini
+[sysadmin@vbox Tallwe2025]$ nano playbooks/host.ini
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml --syntax-check
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/home/sysadmin/Tallwe2025/playbooks/webserver.yaml': line 11, column 12, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      name:httpd
+      state: present
+           ^ here
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ vim playbooks/webserver.ya,l
+[sysadmin@vbox Tallwe2025]$ vim playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml --syntax-check
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/home/sysadmin/Tallwe2025/playbooks/webserver.yaml': line 11, column 12, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      name:httpd
+      state: present
+           ^ here
+[sysadmin@vbox Tallwe2025]$ 
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml --syntax-check
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/home/sysadmin/Tallwe2025/playbooks/webserver.yaml': line 11, column 12, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      name:httpd
+      state: present
+           ^ here
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ ^C
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml --syntax-check
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/home/sysadmin/Tallwe2025/playbooks/webserver.yaml': line 11, column 12, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      name:httpd
+      state: present
+           ^ here
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml --syntax-check
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/home/sysadmin/Tallwe2025/playbooks/webserver.yaml': line 11, column 12, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      name:httpd
+      state: present
+           ^ here
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml --syntax-check
+[WARNING]: Collection ansible.posix does not support Ansible version 2.14.18
+
+playbook: playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml --check --ask-become-pass
+BECOME password: 
+[WARNING]: Collection ansible.posix does not support Ansible version 2.14.18
+
+PLAY [Play para la instalacion y configuracion inicial de webserver] ********************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************************************************************
+ok: [ubuntu01]
+
+TASK [instalacion de paquete httpd] *****************************************************************************************************************
+fatal: [ubuntu01]: FAILED! => {"changed": false, "msg": "Could not import the dnf python module using /usr/bin/python3 (3.12.3 (main, Jun 18 2025, 17:59:45) [GCC 13.3.0]). Please install `python3-dnf` or `python2-dnf` package or ensure you have specified the correct ansible_python_interpreter. (attempted ['/usr/libexec/platform-python', '/usr/bin/python3', '/usr/bin/python2', '/usr/bin/python'])", "results": []}
+
+PLAY RECAP ******************************************************************************************************************************************
+ubuntu01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml --check -K
+BECOME password: 
+[WARNING]: Collection ansible.posix does not support Ansible version 2.14.18
+
+PLAY [Play para la instalacion y configuracion inicial de webserver] ********************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************************************************************
+ok: [ubuntu01]
+
+TASK [instalacion de paquete httpd] *****************************************************************************************************************
+fatal: [ubuntu01]: FAILED! => {"changed": false, "msg": "Could not import the dnf python module using /usr/bin/python3 (3.12.3 (main, Jun 18 2025, 17:59:45) [GCC 13.3.0]). Please install `python3-dnf` or `python2-dnf` package or ensure you have specified the correct ansible_python_interpreter. (attempted ['/usr/libexec/platform-python', '/usr/bin/python3', '/usr/bin/python2', '/usr/bin/python'])", "results": []}
+
+PLAY RECAP ******************************************************************************************************************************************
+ubuntu01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml -K
+BECOME password: 
+[WARNING]: Collection ansible.posix does not support Ansible version 2.14.18
+
+PLAY [Play para la instalacion y configuracion inicial de webserver] ********************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************************************************************
+ok: [ubuntu01]
+
+TASK [instalacion de paquete httpd] *****************************************************************************************************************
+fatal: [ubuntu01]: FAILED! => {"changed": false, "msg": "Could not import the dnf python module using /usr/bin/python3 (3.12.3 (main, Jun 18 2025, 17:59:45) [GCC 13.3.0]). Please install `python3-dnf` or `python2-dnf` package or ensure you have specified the correct ansible_python_interpreter. (attempted ['/usr/libexec/platform-python', '/usr/bin/python3', '/usr/bin/python2', '/usr/bin/python'])", "results": []}
+
+PLAY RECAP ******************************************************************************************************************************************
+ubuntu01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml -K
+BECOME password: 
+[WARNING]: Collection ansible.posix does not support Ansible version 2.14.18
+
+PLAY [Play para la instalacion y configuracion inicial de webserver] ********************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************************************************************
+ok: [ubuntu01]
+
+TASK [instalacion de paquete httpd] *****************************************************************************************************************
+fatal: [ubuntu01]: FAILED! => {"changed": false, "msg": "Could not import the dnf python module using /usr/bin/python3 (3.12.3 (main, Jun 18 2025, 17:59:45) [GCC 13.3.0]). Please install `python3-dnf` or `python2-dnf` package or ensure you have specified the correct ansible_python_interpreter. (attempted ['/usr/libexec/platform-python', '/usr/bin/python3', '/usr/bin/python2', '/usr/bin/python'])", "results": []}
+
+PLAY RECAP ******************************************************************************************************************************************
+ubuntu01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ ls
+ansible.cfg  collections  inventarios  LICENSE  playbooks  README.md  templates
+[sysadmin@vbox Tallwe2025]$ cd inventarios
+[sysadmin@vbox inventarios]$ ls
+host.ini
+[sysadmin@vbox inventarios]$ nano host.ini
+[sysadmin@vbox inventarios]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml -K
+ERROR! the playbook: playbooks/webserver.yaml could not be found
+[sysadmin@vbox inventarios]$ cd ..
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml -K
+BECOME password: 
+[WARNING]: Collection ansible.posix does not support Ansible version 2.14.18
+
+PLAY [Play para la instalacion y configuracion inicial de webserver] ********************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************************************************************
+ok: [centos01]
+
+TASK [instalacion de paquete httpd] *****************************************************************************************************************
+changed: [centos01]
+
+TASK [el servicio httpd iniciado y habilitado] ******************************************************************************************************
+changed: [centos01]
+
+TASK [Puestos habilitados en el firewall] ***********************************************************************************************************
+changed: [centos01] => (item=http)
+changed: [centos01] => (item=https)
+
+TASK [archivo indice personalizado] *****************************************************************************************************************
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+fatal: [centos01]: FAILED! => {"changed": false, "msg": "Could not find or access './templates/index.j2'\nSearched in:\n\t/home/sysadmin/Tallwe2025/playbooks/templates/./templates/index.j2\n\t/home/sysadmin/Tallwe2025/playbooks/./templates/index.j2\n\t/home/sysadmin/Tallwe2025/playbooks/templates/./templates/index.j2\n\t/home/sysadmin/Tallwe2025/playbooks/./templates/index.j2 on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+
+PLAY RECAP ******************************************************************************************************************************************
+centos01                   : ok=4    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml -K
+BECOME password: 
+[WARNING]: Collection ansible.posix does not support Ansible version 2.14.18
+
+PLAY [Play para la instalacion y configuracion inicial de webserver] ********************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************************************************************
+fatal: [centos01]: FAILED! => {"msg": "Incorrect sudo password"}
+
+PLAY RECAP ******************************************************************************************************************************************
+centos01                   : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+[sysadmin@vbox Tallwe2025]$ ansible-playbook -i inventarios/host.ini playbooks/webserver.yaml -K
+BECOME password: 
+[WARNING]: Collection ansible.posix does not support Ansible version 2.14.18
+
+PLAY [Play para la instalacion y configuracion inicial de webserver] ********************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************************************************************
+ok: [centos01]
+
+TASK [instalacion de paquete httpd] *****************************************************************************************************************
+ok: [centos01]
+
+TASK [el servicio httpd iniciado y habilitado] ******************************************************************************************************
+ok: [centos01]
+
+TASK [Puestos habilitados en el firewall] ***********************************************************************************************************
+ok: [centos01] => (item=http)
+ok: [centos01] => (item=https)
+
+TASK [archivo indice personalizado] *****************************************************************************************************************
+changed: [centos01]
+
+PLAY RECAP ******************************************************************************************************************************************
+centos01                   : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ nano playbooks/webserver.yaml
+[sysadmin@vbox Tallwe2025]$ ls
+ansible.cfg  collections  inventarios  LICENSE  playbooks  README.md  templates
+[sysadmin@vbox Tallwe2025]$ tree
+.
+├── ansible.cfg
+├── collections
+│   └── requirements.yaml
+├── inventarios
+│   └── host.ini
+├── LICENSE
+├── playbooks
+│   ├── webserver
+│   ├── webserver.ya,l
+│   └── webserver.yaml
+├── README.md
+└── templates
+    └── index.j2
+
+4 directories, 9 files
+[sysadmin@vbox Tallwe2025]$ cd playbooks
+[sysadmin@vbox playbooks]$ rm webserver
+[sysadmin@vbox playbooks]$ rm webserver.ya,l
+[sysadmin@vbox playbooks]$ ls
+webserver.yaml
+[sysadmin@vbox playbooks]$ cd ..
+[sysadmin@vbox Tallwe2025]$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+	add
+[sysadmin@vbox Tallwe2025]$ git add .
+[sysadmin@vbox Tallwe2025]$ git commint
+git: 'commint' is not a git command. See 'git --help'.
+
+The most similar command is
+	commit
+[sysadmin@vbox Tallwe2025]$ git commit
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'sysadmin@vbox.(none)')
+[sysadmin@vbox Tallwe2025]$ git config --global user.email "santiago_techera_1995@hotmail.com"
+[sysadmin@vbox Tallwe2025]$ git commit
+Aborting commit due to empty commit message.
+[sysadmin@vbox Tallwe2025]$ git push
+Everything up-to-date
+[sysadmin@vbox Tallwe2025]$ git add .
+[sysadmin@vbox Tallwe2025]$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   ansible.cfg
+	new file:   collections/requirements.yaml
+	new file:   inventarios/host.ini
+	new file:   playbooks/webserver.yaml
+	new file:   templates/index.j2
+
+[sysadmin@vbox Tallwe2025]$ git commit
+[main d5750d1] Nuevo
+ 5 files changed, 64 insertions(+)
+ create mode 100644 ansible.cfg
+ create mode 100644 collections/requirements.yaml
+ create mode 100644 inventarios/host.ini
+ create mode 100644 playbooks/webserver.yaml
+ create mode 100644 templates/index.j2
+[sysadmin@vbox Tallwe2025]$ git push
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (11/11), 1.34 KiB | 1.34 MiB/s, done.
+Total 11 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.com:Noslob/Tallwe2025.git
+   3bf18cd..d5750d1  main -> main
